@@ -67,7 +67,7 @@ export async function send_message(req,res){
 
     let result1 = await RiderClientChat.create(chat_data);
   
-    // global.client.broadcast.emit("message", { message: post });
+    global.client.broadcast.emit("message", { message: post });
     global.client.to(body.room_id).emit("message", { message: chat_data });
 
     results = {
