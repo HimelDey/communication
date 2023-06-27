@@ -54,7 +54,7 @@ export const rq_rply_q = async (
     const conn = await rabbitMQ_connect(RABBIT_MQ);
     const channel = await conn.createChannel();
 
-    replyQueue = "restaurant_queue_" + uuidv4();
+    replyQueue = "chat_queue_" + uuidv4();
 
     const correlationId = uuidv4();
     console.log("corr id:", correlationId);
