@@ -2,6 +2,7 @@ global.users = [];
 
 class WebSockets {
   connection(client) {
+    console.log("client :", client);
     global.client = client;
     console.log("connected: " + client.id);
     client.on("disconnect", () => {
@@ -14,7 +15,7 @@ class WebSockets {
         socketId: client.id,
         userId: userId,
       });
-      console.log(global.users)
+      console.log(global.users);
       console.log("identified " + userId + " as " + client.id);
     });
     client.on("subscribe", (room, otherUserId = "") => {
@@ -32,13 +33,12 @@ class WebSockets {
 const subscribeOtherUser = (room, otherUserId, users) => {
   if (users) {
     const userSockets = users.filter((user) => user.userId === otherUserId);
-    console.log(userSockets)
+    console.log(userSockets);
     userSockets.map((userInfo) => {
       const socketConn = global.io.sockets.sockets[userInfo.socketId];
       if (socketConn) {
         socketConn.join(room);
         console.log("joined other");
-        
       }
     });
   }
