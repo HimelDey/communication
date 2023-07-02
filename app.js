@@ -81,9 +81,9 @@ async function connect() {
         });
 
         const channel = await conn.createChannel();
-        const requestQueue = "restaurent_request";
+        const requestQueue = "restaurent_request_chat";
         channel.assertQueue(requestQueue, { durable: false });
-        const interRequestQueue = "main_restaurant_request";
+        const interRequestQueue = "main_restaurant_request_chat";
         channel.assertQueue(interRequestQueue, { durable: false });
         // channel.prefetch(1);
 
