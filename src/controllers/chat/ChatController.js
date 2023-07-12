@@ -91,8 +91,8 @@ export async function send_message(req, res) {
     chat_data._id = result1._id;
 
     console.log("chat_data :", chat_data);
-    global.client.broadcast.emit("message", { message: chat_data });
-    global.client.to(body.room_id).emit("message", { message: chat_data });
+    global.client?.broadcast?.emit("message", { message: chat_data });
+    global.client?.to(body.room_id)?.emit("message", { message: chat_data });
 
     results = {
       status: 0,
