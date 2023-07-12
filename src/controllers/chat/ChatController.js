@@ -80,8 +80,12 @@ export async function send_message(req, res) {
     // if (fromUserData)
     chat_data.user = {
       _id: body.from_user_id,
-      firstName: fromUserData.data.firstName,
-      lastName: fromUserData.data.lastName,
+      firstName: fromUserData.data.firstName
+        ? fromUserData.data.firstName
+        : fromUserData.data.first_name,
+      lastName: fromUserData.data.lastName
+        ? fromUserData.data.lastName
+        : fromUserData.data.last_name,
       avatar: "https://www.iconspng.com/uploads/circled-user-icon.png",
     };
     chat_data._id = result1._id;
@@ -138,8 +142,12 @@ export async function receive_message(req, res) {
     for (let i = 0; i < result1.length; i++) {
       result1[i]._doc.user = {
         _id: body.from_user_id,
-        firstName: fromUserData.data.firstName,
-        lastName: fromUserData.data.lastName,
+        firstName: fromUserData.data.firstName
+          ? fromUserData.data.firstName
+          : fromUserData.data.first_name,
+        lastName: fromUserData.data.lastName
+          ? fromUserData.data.lastName
+          : fromUserData.data.last_name,
         avatar: "https://www.iconspng.com/uploads/circled-user-icon.png",
       };
     }
