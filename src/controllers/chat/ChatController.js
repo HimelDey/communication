@@ -70,10 +70,10 @@ export async function send_message(req, res) {
     // console.log("result1 :", result1);
 
     const fromUserData = await Send_Queue(
-      "main_user_request",
+      body.from_type == "User" ? "main_user_request" : "main_rider_request",
       "",
       { _id: body.from_user_id },
-      "UserModel",
+      body.from_type == "User" ? "UserModel" : "RiderModel",
       "get"
     );
     console.log("fromUserData :", fromUserData);
@@ -127,10 +127,10 @@ export async function receive_message(req, res) {
     console.log("result1 :", result1);
 
     const fromUserData = await Send_Queue(
-      "main_user_request",
+      body.from_type == "User" ? "main_user_request" : "main_rider_request",
       "",
       { _id: body.from_user_id },
-      "UserModel",
+      body.from_type == "User" ? "UserModel" : "RiderModel",
       "get"
     );
     console.log("fromUserData :", fromUserData);
